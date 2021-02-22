@@ -36,17 +36,78 @@ var mantraButton = document.querySelector('#mantra');
 var messagePlaceholder = document.querySelector('#placeholder');
 var buddha = document.querySelector('img');
 var choiceButtons = document.querySelectorAll('input[name="choice"]');
+var favoriteMessageButton = document.querySelector('.favorite-button');
+var favoriteMessageForm = document.querySelector('.favorite-message');
+var mainPage = document.querySelector('.main-page');
+var backToMainButton = document.querySelector('.back-to-main');
+var favoriteMessageGrid = document.querySelector('.favorite-message-grid');
+var viewFavoritesButton = document.querySelector('.view-favorites');
+var deleteButton = document.querySelector('.delete-message');
+
+var selectedMessage;
+var savedMessages = [];
+var favoriteIndex = 0;
+var currentMessage;
+class Message {
+  constructor(identification, message) {
+    this.id = identification;
+    this.message = message;
+  }
+}
 
 receiveMessageButton.addEventListener('click', showMessage);
+favoriteMessageButton.addEventListener('click', saveFavoriteMessage);
+backToMainButton.addEventListener('click', showForm);
+viewFavoritesButton.addEventListener('click', showForm);
+deleteButton.addEventListener('click', deleteMessage);
 
 function showMessage () {
   var randomAffirmation = affirmations[Math.floor(Math.random() * affirmations.length)];
   var randomMantra = mantras[Math.floor(Math.random() * mantras.length)];
   for(var i = 0; i < choiceButtons.length; i++) {
     if(choiceButtons[0].checked) {
-      messagePlaceholder.innerText = randomAffirmation;
+      currentMessage = messagePlaceholder.innerText = randomAffirmation;
+      showButton();
   } else if(choiceButtons[1].checked) {
-      messagePlaceholder.innerText = randomMantra;
+      currentMessage = messagePlaceholder.innerText = randomMantra;
+      showButton();
   }
+}
+}
+
+function showButton() {
+  favoriteMessageButton.classList.remove('hidden');
+  viewFavoritesButton.classList.remove('hidden');
+}
+
+function showForm() {
+    mainPage.classList.toggle('hidden');
+    favoriteMessageForm.classList.toggle('hidden');
+}
+
+function saveFavoriteMessage() {
+  var newMessage = new Message (favoriteIndex, currentMessage)
+  if(!savedMessages.includes(newMessage.message)) {
+  savedMessages.push(newMessage);
+  favoriteIndex++;
+  favoriteMessageGrid.innerHTML += `
+  <section class="display-message">
+  <input type="radio" id=${newMessage.id} class="radio-buttons" name="feelings" value="currentMessage" onclick="clicked(${newMessage.id})">
+  <label class="great-message">${newMessage.message}</label>
+  </section>
+`;
+}
+}
+
+function clicked(id) {
+  var chooseMessageButton = document.querySelectorAll('.radio-buttons');
+  for(var i = 0; chooseMessageButton.length; i++) {
+    if(chooseMessageButton[i].checked) {
+      selectedMessage = chooseMessageButton[i];
+    }
   }
+}
+
+function deleteMessage() {
+  selectedMessage.parentNode.remove();
 }

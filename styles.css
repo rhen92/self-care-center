@@ -3,7 +3,8 @@
   font-family: 'Quicksand', sans-serif;
 }
 
-h1 {
+h1,
+h2 {
   color: #ffffff;
   text-align: center;
   padding: 10px;
@@ -53,7 +54,7 @@ border-radius: 5px;
 
 .two {
 margin-top: 80px;
-margin-bottom: 80px;
+margin-bottom: 40px;
 margin-left: 200px;
 margin-right: 200px;
 padding: 50px;
@@ -66,6 +67,56 @@ content: 10px;
 html {
 background: linear-gradient(#134d71, #78a7c6, #f7e4bf);
 height: 100%;
+}
+
+.hidden {
+  display: none!important;
+}
+
+.favorite-button,
+.view-favorites {
+  background-color: #134d71;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.outer-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* ~~~~~~ Favorite Message Section ~~~~~~~*/
+
+.favorite-message-grid {
+  background: #ffffff;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.main-button-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.back-to-main,
+.delete-message {
+  background-color: #134d71;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 /* font-family: 'Quicksand', sans-serif;
 COLORS

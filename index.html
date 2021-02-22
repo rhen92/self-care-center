@@ -14,14 +14,24 @@
           <input type="radio" name="choice" value="affirmations"> affirmation
           <input type="radio" name="choice" value="mantra"> mantra
         </form>
-        <button class="lower-btn">
-          Receive Message
-        </button>
+        <button class="lower-btn">Receive Message</button>
       </article>
       <article id="placeholder" class="inner-wrapper two">
       <img src="assets/meditate.svg" alt="little buddha">
-    </article>
-  </section>
+      </article>
+      <article class="outer-wrapper">
+        <button class="favorite-button hidden">Favorite</button>
+        <button class="view-favorites hidden">View Favorites</button>
+      </article>
+    </section>
+    <section class="favorite-message hidden">
+      <h2>✨Favorite Messages✨</h2>
+      <article class="favorite-message-grid"></article>
+      <div class=main-button-wrapper>
+        <button class="delete-message">Delete Message</button>
+        <button class="back-to-main">Back to Main</button>
+      </div>
+    </section>
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
