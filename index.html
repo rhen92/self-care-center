@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-    <title>Self Care</title>
-  </head>
-  <body>
-    <section class="main-page">
-      <h1 class="care">✨Self Care Center✨</h1>
-      <h3 class="which-message">Which type of message?</h3>
-      <article class="inner-wrapper">
-        <form class="circle-wrapper">
-          <input type="radio" name="choice" value="affirmations"> affirmation
-          <input type="radio" name="choice" value="mantra"> mantra
-        </form>
-        <button class="lower-btn">Receive Message</button>
-      </article>
-      <article id="placeholder" class="inner-wrapper two">
+
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <title>Self Care</title>
+</head>
+
+<body>
+  <section class="main-page">
+    <h1 class="care">✨Self Care Center✨</h1>
+    <h3 class="which-message">Which type of message?</h3>
+    <article class="inner-wrapper">
+      <form class="circle-wrapper">
+        <input type="radio" name="choice" value="affirmations"> affirmation
+        <input type="radio" name="choice" value="mantra"> mantra
+      </form>
+      <button class="lower-btn">Receive Message</button>
+    </article>
+    <article id="placeholder" class="inner-wrapper two">
       <img src="assets/meditate.svg" alt="little buddha">
-      </article>
-      <article class="outer-wrapper">
-        <button class="favorite-button hidden">Favorite</button>
-        <button class="view-favorites hidden">View Favorites</button>
-      </article>
-    </section>
-    <section class="favorite-message hidden">
-      <h2>✨Favorite Messages✨</h2>
-      <article class="favorite-message-grid"></article>
-      <div class=main-button-wrapper>
-        <button class="delete-message">Delete Message</button>
-        <button class="back-to-main">Back to Main</button>
-      </div>
-    </section>
-    <script type="text/javascript" src="main.js"></script>
-  </body>
+    </article>
+    <article class="outer-wrapper">
+      <button class="favorite-button hidden">Favorite</button>
+      <button class="view-favorites hidden">View Favorites</button>
+    </article>
+  </section>
+  <section class="favorite-message hidden">
+    <h2>✨Favorite Messages✨</h2>
+    <article class="favorite-message-grid"></article>
+    <div class=main-button-wrapper>
+      <button class="delete-message">Delete Message</button>
+      <button class="back-to-main">Back to Main</button>
+    </div>
+  </section>
+  <script type="text/javascript" src="main.js"></script>
+</body>
+
 </html>

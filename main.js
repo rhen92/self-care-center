@@ -44,6 +44,7 @@ var favoriteMessageGrid = document.querySelector('.favorite-message-grid');
 var viewFavoritesButton = document.querySelector('.view-favorites');
 var deleteButton = document.querySelector('.delete-message');
 
+var selectedId;
 var selectedMessage;
 var savedMessages = [];
 var favoriteIndex = 0;
@@ -61,18 +62,18 @@ backToMainButton.addEventListener('click', showForm);
 viewFavoritesButton.addEventListener('click', showForm);
 deleteButton.addEventListener('click', deleteMessage);
 
-function showMessage () {
+function showMessage() {
   var randomAffirmation = affirmations[Math.floor(Math.random() * affirmations.length)];
   var randomMantra = mantras[Math.floor(Math.random() * mantras.length)];
-  for(var i = 0; i < choiceButtons.length; i++) {
-    if(choiceButtons[0].checked) {
+  for (var i = 0; i < choiceButtons.length; i++) {
+    if (choiceButtons[0].checked) {
       currentMessage = messagePlaceholder.innerText = randomAffirmation;
       showButton();
-  } else if(choiceButtons[1].checked) {
+    } else if (choiceButtons[1].checked) {
       currentMessage = messagePlaceholder.innerText = randomMantra;
       showButton();
+    }
   }
-}
 }
 
 function showButton() {
@@ -81,33 +82,47 @@ function showButton() {
 }
 
 function showForm() {
-    mainPage.classList.toggle('hidden');
-    favoriteMessageForm.classList.toggle('hidden');
+  mainPage.classList.toggle('hidden');
+  favoriteMessageForm.classList.toggle('hidden');
 }
 
 function saveFavoriteMessage() {
-  var newMessage = new Message (favoriteIndex, currentMessage)
-  if(!savedMessages.includes(newMessage.message)) {
-  savedMessages.push(newMessage);
-  favoriteIndex++;
-  favoriteMessageGrid.innerHTML += `
+  var newMessage = new Message(favoriteIndex, currentMessage)
+  var found = false;
+  for (var i = 0; i < savedMessages.length; i++) {
+    if (savedMessages[i].message === newMessage.message) {
+      found = true;
+    }
+  }
+  if (!found) {
+    savedMessages.push(newMessage);
+    favoriteIndex++;
+    favoriteMessageGrid.innerHTML += `
   <section class="display-message">
   <input type="radio" id=${newMessage.id} class="radio-buttons" name="feelings" value="currentMessage" onclick="clicked(${newMessage.id})">
   <label class="great-message">${newMessage.message}</label>
   </section>
 `;
-}
+  }
 }
 
 function clicked(id) {
   var chooseMessageButton = document.querySelectorAll('.radio-buttons');
-  for(var i = 0; chooseMessageButton.length; i++) {
-    if(chooseMessageButton[i].checked) {
+  for (var i = 0; chooseMessageButton.length; i++) {
+    if (chooseMessageButton[i].checked) {
       selectedMessage = chooseMessageButton[i];
+      selectedId = selectedMessage.id
+
     }
   }
 }
 
 function deleteMessage() {
   selectedMessage.parentNode.remove();
+  for (var i = 0; i < savedMessages.length; i++) {
+    if (savedMessages[i].id.toString() === selectedId) {
+      savedMessages.splice(i, 1);
+    }
+
+  }
 }
